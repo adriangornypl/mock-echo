@@ -89,7 +89,7 @@ class PresenceChannel extends PrivateChannel {
             console.error('user is null!')
             return
         }
-        
+
         let subId = Math.floor(Math.random() * 1000)
         user.subId = subId
         this.users.push(user)
@@ -169,6 +169,12 @@ class MockEcho {
     join(channelName) {
         let presenceChannel = this.listenChannelByFullName(`presence-${channelName}`)
         return presenceChannel
+    }
+    leave(channelName) {
+        if (typeof this.channels[channelName] !== 'undefined') {
+            delete this.channels[channelName]
+        }
+        return this
     }
 
     listenChannelByFullName(fullName) {
