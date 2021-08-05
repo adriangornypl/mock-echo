@@ -174,6 +174,13 @@ class MockEcho {
         if (typeof this.channels[channelName] !== 'undefined') {
             delete this.channels[channelName]
         }
+        if (typeof this.channels["private-" + channelName] !== 'undefined') {
+            delete this.channels["private-" + channelName]
+        }
+        if (typeof this.channels["presence-" + channelName] !== 'undefined') {
+            delete this.channels["presence-" + channelName]
+        }
+
         return this
     }
 
