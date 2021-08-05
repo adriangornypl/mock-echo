@@ -10,6 +10,10 @@ class Channel {
         this.events[eventName] = fn;
         return this
     }
+    stopListening (eventName: string) {
+        delete this.events[eventName]
+        return this
+    }
     broadcast (eventName, event) {
         if (typeof this.events[eventName] === 'undefined') {
             console.error(`Channel didn't listen to event: ${eventName}`);
